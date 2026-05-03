@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Visual Art</title>
+<!-- ===================================== -->
+<!-- ADD THIS INSIDE <head> -->
+<!-- ===================================== -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" href="logovalo.png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#0a0a0a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(45deg, transparent 48%, rgba(255,70,85,.06) 50%, transparent 52%);
+    background-size:60px 60px;
+    animation:bgMove 10s linear infinite;
+    z-index:-1;
+}
+
+@keyframes bgMove{
+    from{background-position:0 0;}
+    to{background-position:60px 60px;}
+}
+
+/* Scrollbar */
+/* ================================= */
+/* ULTRA RIOT GAMES STYLE SCROLLBAR */
+/* Replace old scrollbar css */
+/* ================================= */
+
+/* Chrome / Edge */
+::-webkit-scrollbar{
+    width:16px;
+    background:#050505;
+}
+
+/* Track */
+::-webkit-scrollbar-track{
+    background:
+    linear-gradient(
+        180deg,
+        #080808 0%,
+        #111 50%,
+        #080808 100%
+    );
+    border-left:1px solid rgba(255,70,85,.18);
+    box-shadow:inset 0 0 12px rgba(0,0,0,.8);
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb{
+    background:
+    linear-gradient(
+        180deg,
+        #ff4655 0%,
+        #c9182c 55%,
+        #7a0012 100%
+    );
+    border:2px solid #050505;
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        100% 82%,
+        82% 100%,
+        0 100%
+    );
+    box-shadow:
+        0 0 14px rgba(255,70,85,.65),
+        inset 0 0 10px rgba(255,255,255,.08);
+}
+
+/* Hover */
+::-webkit-scrollbar-thumb:hover{
+    background:
+    linear-gradient(
+        180deg,
+        #ff6876 0%,
+        #ff4655 50%,
+        #d00020 100%
+    );
+    box-shadow:
+        0 0 20px rgba(255,70,85,.95),
+        inset 0 0 12px rgba(255,255,255,.12);
+}
+
+/* Click */
+::-webkit-scrollbar-thumb:active{
+    background:#ff4655;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner{
+    background:#050505;
+}
+
+/* Top + Bottom Buttons */
+::-webkit-scrollbar-button{
+    height:16px;
+    background:#111;
+}
+
+/* Optional animated glow line */
+body::after{
+    content:"";
+    position:fixed;
+    top:0;
+    right:0;
+    width:2px;
+    height:100%;
+    background:linear-gradient(
+        180deg,
+        transparent,
+        #ff4655,
+        transparent
+    );
+    box-shadow:0 0 15px #ff4655;
+    pointer-events:none;
+    z-index:9999;
+    animation:riotScrollGlow 2s linear infinite;
+}
+
+@keyframes riotScrollGlow{
+    from{opacity:.3;}
+    to{opacity:1;}
+}
+
+/* Firefox */
+html{
+    scrollbar-width:thin;
+    scrollbar-color:#ff4655 #0a0a0a;
+}
+
+/* =============================== */
+/* RIOT PREMIUM ANIMATION UPGRADE */
+/* =============================== */
+
+/* smoother global motion */
+*{
+    transition:
+    transform .45s cubic-bezier(.16,1,.3,1),
+    opacity .45s ease,
+    background .35s ease,
+    color .35s ease,
+    box-shadow .45s ease;
+}
+
+/* SECTION REVEAL */
+.hidden{
+    opacity:0;
+    transform: translateY(90px) scale(.96);
+    filter: blur(10px);
+    transition: all .9s cubic-bezier(.16,1,.3,1);
+    will-change: transform, opacity, filter;
+}
+
+.show{
+    opacity:1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+/* STAGGER DELAY SYSTEM */
+.show.stagger-1{ transition-delay:.05s; }
+.show.stagger-2{ transition-delay:.10s; }
+.show.stagger-3{ transition-delay:.15s; }
+.show.stagger-4{ transition-delay:.20s; }
+
+
+/* NAVBAR DROP IN */
+nav{
+    animation:navDrop 1s cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes navDrop{
+    from{
+        transform:translateY(-100%);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+/* HERO IMAGE FLOATING RIOT STYLE */
+.profile-wrap{
+    animation:heroFloat 5s ease-in-out infinite;
+}
+
+@keyframes heroFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-18px);}
+}
+
+/* HERO TEXT SLIDE */
+.hero-right{
+    animation:heroText 1.4s cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes heroText{
+    from{
+        opacity:0;
+        transform:translateX(80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+/* BUTTONS LIKE RIOT */
+.hero button{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero button::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+}
+
+.hero button:hover::before{
+    left:120%;
+    transition:.7s;
+}
+
+/* MODULE CARDS SNAP MOTION */
+.module:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+/* IMAGE ZOOM */
+.module img{
+    transition:transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+.module:hover img{
+    transform:scale(1.08);
+}
+
+/* RIOT MENU TILES */
+.riot-tile:hover{
+    transform:translateY(-8px) scale(1.03);
+}
+
+/* SLIDER TEXT CINEMATIC */
+.slide-content h2{
+    animation:titleReveal 1s ease;
+}
+
+@keyframes titleReveal{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+        letter-spacing:10px;
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+        letter-spacing:0;
+    }
+}
+
+/* GLITCH LINE */
+.title{
+    position:relative;
+}
+
+.title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    width:90px;
+    height:3px;
+    background:#ff4655;
+    animation:glitchLine 2s infinite alternate;
+}
+
+@keyframes glitchLine{
+    0%{width:60px;}
+    100%{width:110px;}
+}
+
+/* TOP BUTTON POP */
+.top-btn.show-btn{
+    display:block;
+    animation:popUp .4s ease;
+}
+
+@keyframes popUp{
+    from{
+        transform:scale(0);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* NAVBAR */
+/* ========================= */
+/* RIOT-STYLE NAVBAR UPGRADE */
+/* ========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:72px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px;
+
+    background:rgba(10,10,10,.65);
+    backdrop-filter: blur(12px);
+
+    border-bottom:1px solid rgba(255,70,85,.25);
+
+    z-index:999;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        98% 100%,
+        0% 100%
+    );
+
+    transition:.3s ease;
+}
+
+/* subtle glow line */
+nav::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#ff4655,transparent);
+    opacity:.6;
+}
+
+/* LOGO */
+nav h1{
+    font-family:'Oswald',sans-serif;
+    font-size:22px;
+    letter-spacing:4px;
+    color:#ff4655;
+    text-transform:uppercase;
+    position:relative;
+}
+
+/* glowing accent line under logo */
+nav h1::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:40px;
+    height:2px;
+    background:#ff4655;
+    box-shadow:0 0 10px #ff4655;
+}
+
+/* MENU */
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    align-items:center;
+}
+
+/* LINKS */
+nav a{
+    position:relative;
+    color:#ddd;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:8px 0;
+    transition:.3s;
+}
+
+/* hover glow underline (RIOT style) */
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0%;
+    height:2px;
+    background:#ff4655;
+    box-shadow:0 0 8px #ff4655;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* ACTIVE FEEL (optional class if you want later) */
+nav a.active{
+    color:#ff4655;
+}
+
+nav a.active::after{
+    width:100%;
+}
+
+/* SCROLLED STATE */
+nav.scrolled{
+    background:rgba(0,0,0,.85);
+    box-shadow:0 10px 30px rgba(255,70,85,.15);
+}
+
+
+/* HERO */
+/* ========================= */
+/* REPLACE HERO CSS WITH THIS */
+/* ========================= */
+
+.hero{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:40px;
+    padding:120px 70px 80px;
+    position:relative;
+    overflow:hidden;
+    background-image: url("rim.png");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top right, rgba(255,70,85,.20), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255,70,85,.12), transparent 30%);
+    animation:pulseBg 5s infinite alternate;
+}
+
+@keyframes pulseBg{
+    from{opacity:.6;}
+    to{opacity:1;}
+}
+
+.hero-left,
+.hero-right{
+    position:relative;
+    z-index:2;
+}
+/* ===================================== */
+/* ADD THIS TO CSS */
+/* ===================================== */
+
+.hero-info{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin:25px 0;
+}
+
+.info-box{
+    background:rgba(255,255,255,.04);
+    border-left:3px solid #ff4655;
+    padding:14px;
+    transition:.3s;
+}
+
+.info-box:hover{
+    transform:translateY(-5px);
+    background:rgba(255,70,85,.08);
+}
+
+.info-box span{
+    color:#999;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.info-box h4{
+    margin-top:6px;
+    font-size:17px;
+    color:#fff;
+}
+
+/* SOCIAL MEDIA */
+.social-links{
+    display:flex;
+    gap:14px;
+    margin-top:28px;
+    flex-wrap:wrap;
+}
+
+.social-links a{
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,70,85,.4);
+    color:#fff;
+    font-size:18px;
+    text-decoration:none;
+    transition:.3s;
+    background:rgba(255,255,255,.03);
+}
+
+.social-links a:hover{
+    background:#ff4655;
+    transform:translateY(-6px) rotate(8deg);
+    box-shadow:0 10px 18px rgba(255,70,85,.25);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.hero-info{
+    grid-template-columns:1fr;
+}
+
+.social-links{
+    justify-content:center;
+}
+
+}
+
+
+/* PROFILE */
+.profile-wrap{
+    width:340px;
+    height:340px;
+    margin:auto;
+    position:relative;
+}
+
+.profile-pic{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #ff4655;
+    box-shadow:0 0 30px rgba(255,70,85,.45);
+    animation:floatPic 4s ease-in-out infinite;
+}
+
+@keyframes floatPic{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+.ring{
+    position:absolute;
+    inset:-12px;
+    border:2px solid rgba(255,70,85,.55);
+    border-radius:50%;
+}
+
+.ring1{
+    animation:spin1 8s linear infinite;
+}
+
+.ring2{
+    inset:-28px;
+    border-style:dashed;
+    animation:spin2 12s linear infinite;
+}
+
+@keyframes spin1{
+    from{transform:rotate(0);}
+    to{transform:rotate(360deg);}
+}
+
+@keyframes spin2{
+    from{transform:rotate(360deg);}
+    to{transform:rotate(0);}
+}
+
+/* TEXT */
+.mini-title{
+    color:white;
+    letter-spacing:4px;
+    font-size:14px;
+    margin-bottom:15px;
+    font-weight:700;
+}
+
+.hero-right h2{
+    font-family:'Oswald',sans-serif;
+    font-size:78px;
+    line-height:1;
+    margin-bottom:20px;
+    color:#fff;
+    min-height:90px;
+}
+
+.hero-right h2 span{
+    color:#ff4655;
+}
+
+.hero-desc{
+    color:#d8d8d8;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+/* BUTTONS */
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.hero button{
+    padding:14px 34px;
+    border:none;
+    background:#ff4655;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.hero button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(255,70,85,.25);
+}
+
+.btn-outline{
+    background:transparent !important;
+    border:2px solid #ff4655 !important;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding:120px 20px 70px;
+}
+
+.profile-wrap{
+    width:250px;
+    height:250px;
+}
+
+.hero-right h2{
+    font-size:48px;
+    min-height:auto;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+.hero-desc{
+    font-size:16px;
+}
+
+}
+
+
+/* SECTION */
+section{
+    padding:90px 70px;
+}
+
+.title{
+    font-family:'Oswald',sans-serif;
+    font-size:45px;
+    color:#ff4655;
+    margin-bottom:30px;
+}
+
+/* TABLE */
+.contents{
+    background:#111;
+    border-left:5px solid #ff4655;
+    padding:30px;
+}
+
+.contents li{
+    list-style:none;
+    padding:14px;
+    border-bottom:1px solid #222;
+    transition:.3s;
+}
+
+.contents li:hover{
+    transform:translateX(10px);
+    color:#ff4655;
+}
+
+/* INDIVIDUAL MODULE */
+.module{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:center;
+    margin-bottom:50px;
+    background:#151515;
+    border-left:5px solid #ff4655;
+    padding:25px;
+    overflow:hidden;
+}
+
+.module:nth-child(even){
+    direction:rtl;
+}
+
+.module:nth-child(even) .module-info{
+    direction:ltr;
+}
+
+/* ========================= */
+/* RIOT MODULE OUTPUT CARDS */
+/* ========================= */
+
+.module{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:25px;
+
+    background:linear-gradient(145deg,#0f0f0f,#141414);
+    border:1px solid rgba(255,70,85,.25);
+    border-left:5px solid #ff4655;
+
+    padding:25px;
+    margin-bottom:30px;
+
+    overflow:hidden;
+    transition:.3s ease;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 85%,
+        97% 100%,
+        0 100%
+    );
+}
+
+/* hover "selection" feel */
+.module:hover{
+    transform:translateY(-8px);
+    border-color:#ff4655;
+    box-shadow:0 15px 35px rgba(255,70,85,.15);
+}
+
+/* glowing sweep effect like Riot UI */
+.module::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,70,85,.10),
+        transparent
+    );
+    transition:.6s;
+}
+
+.module:hover::before{
+    left:120%;
+}
+
+/* IMAGE */
+.module img{
+    width:100%;
+    height:260px;
+    object-fit: contain;
+    border:1px solid rgba(255,70,85,.4);
+    filter:brightness(.8);
+    transition:.3s ease;
+}
+
+.module:hover img{
+    transform:scale(1.05);
+    filter:brightness(1);
+}
+
+/* TEXT SIDE */
+.module-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.module-info h3{
+    font-family:'Oswald',sans-serif;
+    font-size:28px;
+    color:#ff4655;
+    margin-bottom:12px;
+    letter-spacing:1px;
+    position:relative;
+}
+
+/* small accent line like Riot UI */
+.module-info h3::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:50px;
+    height:2px;
+    background:#ff4655;
+    box-shadow:0 0 10px #ff4655;
+}
+
+.module-info p{
+    color:#ccc;
+    font-size:15px;
+    line-height:1.7;
+}
+
+/* alternating direction (keeps your Riot feel) */
+.module:nth-child(even){
+    direction:rtl;
+}
+
+.module:nth-child(even) .module-info{
+    direction:ltr;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .module{
+        grid-template-columns:1fr;
+        direction:ltr !important;
+    }
+
+    .module img{
+        height:200px;
+    }
+}
+
+
+/* CARD */
+.card{
+    background:#151515;
+    padding:25px;
+    border-left:5px solid #ff4655;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    background:#111;
+    border-top:2px solid #ff4655;
+    color:#aaa;
+}
+
+/* SCROLL ANIMATION */
+.hidden{
+    opacity:0;
+    transform:translateY(70px);
+    transition:1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    nav{
+        padding:0 20px;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero h2{
+        font-size:45px;
+    }
+
+    section{
+        padding:70px 20px;
+    }
+
+    .module{
+        grid-template-columns:1fr;
+        direction:ltr !important;
+    }
+
+    .module img{
+        height:230px;
+    }
+}
+/* ADD THIS TO CSS */
+
+.thankyou{
+    padding:120px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-image: url("rem.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+.thank-box{
+    width:100%;
+    max-width:800px;
+    background:rgba(20,20,20,.92);
+    border:2px solid #ff4655;
+    padding:60px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 0 30px rgba(255,70,85,.25);
+}
+
+.thank-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,70,85,.12),transparent);
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+    100%{
+        left:100%;
+    }
+}
+
+.thank-line{
+    width:90px;
+    height:5px;
+    background:#ff4655;
+    margin:auto;
+    margin-bottom:25px;
+}
+
+.thank-box h2{
+    font-family:'Oswald',sans-serif;
+    font-size:65px;
+    color:#ff4655;
+    letter-spacing:4px;
+    margin-bottom:20px;
+    text-shadow:0 0 15px rgba(255,70,85,.7);
+}
+
+.thank-box p{
+    color:#ddd;
+    font-size:18px;
+    line-height:1.9;
+    max-width:650px;
+    margin:auto;
+    margin-bottom:30px;
+}
+
+.thank-box button{
+    padding:14px 35px;
+    border:none;
+    background:#ff4655;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    letter-spacing:1px;
+}
+
+.thank-box button:hover{
+    transform:scale(1.08);
+    background:#ff2d3e;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.thank-box{
+    padding:45px 20px;
+}
+
+.thank-box h2{
+    font-size:42px;
+}
+
+.thank-box p{
+    font-size:16px;
+}
+
+}
+<!-- ========================= -->
+<!-- ADD THIS CSS INSIDE <style> -->
+<!-- ========================= -->
+
+/* RIOT SLIDER */
+.slider-section{
+    padding:90px 70px;
+}
+
+.slider{
+    position:relative;
+    width:100%;
+    height:520px;
+    overflow:hidden;
+    border:2px solid #ff4655;
+    background:#111;
+}
+
+.slides{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform .8s ease;
+}
+
+.slide{
+    min-width:100%;
+    height:100%;
+    position:relative;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.55);
+}
+
+.slide-content{
+    position:absolute;
+    left:60px;
+    bottom:60px;
+    max-width:600px;
+}
+
+.slide-content h2{
+    font-family:'Oswald',sans-serif;
+    font-size:65px;
+    color:#ff4655;
+    margin-bottom:10px;
+}
+
+.slide-content p{
+    color:#eee;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:55px;
+    height:55px;
+    border:none;
+    background:rgba(255,70,85,.85);
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+    z-index:10;
+    transition:.3s;
+}
+
+.slider-btn:hover{
+    background:#ff2d3e;
+    transform:translateY(-50%) scale(1.08);
+}
+
+.prev{ left:15px; }
+.next{ right:15px; }
+
+.dots{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+}
+
+.dot{
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#555;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.dot.active{
+    background:#ff4655;
+    transform:scale(1.2);
+}
+
+/* NAV SCROLL EFFECT */
+nav.scrolled{
+    background:#000;
+    box-shadow:0 0 15px rgba(255,70,85,.3);
+}
+
+/* FLOAT BUTTON */
+.top-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#ff4655;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+    z-index:999;
+}
+
+.top-btn.show-btn{
+    display:block;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.slider-section{
+    padding:70px 20px;
+}
+
+.slider{
+    height:380px;
+}
+
+.slide-content{
+    left:25px;
+    right:25px;
+    bottom:35px;
+}
+
+.slide-content h2{
+    font-size:40px;
+}
+
+.slide-content p{
+    font-size:15px;
+}
+
+}
+/* ========================= */
+/* RIOT STYLE SECTIONS */
+/* ========================= */
+
+.riot-section{
+    padding:90px 70px;
+}
+
+/* PANEL (TOC) */
+.riot-panel{
+    background:linear-gradient(145deg,#0f0f0f,#151515);
+    border:1px solid rgba(255,70,85,.4);
+    border-left:5px solid #ff4655;
+    padding:20px;
+    box-shadow:0 0 25px rgba(255,70,85,.08);
+}
+
+/* ITEM */
+.riot-item{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:16px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.riot-item::before{
+    content:"";
+    position:absolute;
+    left:-100%;
+    top:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,70,85,.08),transparent);
+    transition:.5s;
+}
+
+.riot-item:hover::before{
+    left:100%;
+}
+
+.riot-item:hover{
+    transform:translateX(10px);
+    background:rgba(255,70,85,.05);
+}
+
+.num{
+    font-family:'Oswald',sans-serif;
+    font-size:20px;
+    color:#ff4655;
+    width:40px;
+}
+
+.text{
+    font-size:15px;
+    color:#ddd;
+    letter-spacing:.5px;
+}
+
+/* ========================= */
+/* ARTIST CARD RIOT STYLE */
+/* ========================= */
+
+.riot-card{
+    position:relative;
+    background:linear-gradient(145deg,#0f0f0f,#141414);
+    border:1px solid rgba(255,70,85,.4);
+    border-left:5px solid #ff4655;
+    padding:40px;
+    overflow:hidden;
+    box-shadow:0 0 30px rgba(255,70,85,.1);
+}
+
+.riot-card p{
+    color:#ddd;
+    line-height:1.9;
+    font-size:16px;
+}
+
+/* glow effect */
+.riot-glow{
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle, rgba(255,70,85,.12), transparent 60%);
+    animation:glowMove 6s infinite linear;
+}
+
+@keyframes glowMove{
+    0%{transform:translate(0,0);}
+    50%{transform:translate(30px,30px);}
+    100%{transform:translate(0,0);}
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .riot-section{
+        padding:70px 20px;
+    }
+
+    .riot-card{
+        padding:25px;
+    }
+
+    .text{
+        font-size:14px;
+    }
+}
+
+/* ========================= */
+/* RIOT GAME MENU CONTAINER */
+/* ========================= */
+
+.riot-menu{
+    display:grid;
+    gap:18px;
+}
+
+/* BIG FEATURE TILE */
+.riot-tile.main{
+    position:relative;
+    background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+    border-left:5px solid #ff4655;
+    padding:30px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.riot-tag{
+    position:absolute;
+    top:15px;
+    right:15px;
+    font-size:11px;
+    letter-spacing:3px;
+    color:#ff4655;
+    font-weight:700;
+}
+
+.riot-tile.main i{
+    font-size:28px;
+    color:#ff4655;
+}
+
+.riot-tile.main h3{
+    font-family:'Oswald',sans-serif;
+    font-size:28px;
+    margin-top:10px;
+}
+
+.riot-tile.main p{
+    color:#aaa;
+    margin-top:5px;
+}
+
+/* GRID TILES */
+.riot-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+}
+
+/* SMALL TILES (RIOT CARD STYLE) */
+.riot-tile{
+    position:relative;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,70,85,.2);
+    padding:20px;
+    cursor:pointer;
+    transition:.25s;
+    overflow:hidden;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 85%,
+        90% 100%,
+        0 100%
+    );
+}
+
+/* glow sweep */
+.riot-tile::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,70,85,.15),transparent);
+    transition:.6s;
+}
+
+.riot-tile:hover::before{
+    left:120%;
+}
+
+/* hover feel like selection */
+.riot-tile:hover{
+    transform:translateY(-6px);
+    border-color:#ff4655;
+    box-shadow:0 10px 25px rgba(255,70,85,.15);
+}
+
+/* number */
+.riot-tile span{
+    font-size:11px;
+    color:#ff4655;
+    letter-spacing:2px;
+}
+
+/* icon */
+.riot-tile i{
+    display:block;
+    font-size:20px;
+    margin:10px 0;
+    color:#fff;
+}
+
+/* title */
+.riot-tile h3{
+    font-size:14px;
+    color:#ddd;
+    letter-spacing:.5px;
+}
+
+/* ACTIVE FEEL (optional future JS) */
+.riot-tile.active{
+    border-color:#ff4655;
+    background:rgba(255,70,85,.08);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .riot-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+/* ========================= */
+/* PROCESS DOCUMENTATION NEW STYLE */
+/* ========================= */
+
+.process-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.process-card{
+    background:linear-gradient(145deg,#0f0f0f,#141414);
+    border:1px solid rgba(255,70,85,.25);
+    border-left:5px solid #ff4655;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.process-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(255,70,85,.15);
+}
+
+/* HEADER */
+.process-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.process-header h3{
+    font-family:'Oswald',sans-serif;
+    color:#ff4655;
+    font-size:22px;
+}
+
+.tag{
+    font-size:11px;
+    letter-spacing:2px;
+    color:#aaa;
+    border:1px solid rgba(255,70,85,.4);
+    padding:4px 8px;
+}
+
+/* IMAGE ROW */
+.process-images{
+    display:flex;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.process-images img{
+    width:33%;
+    height:90px;
+    object-fit:cover;
+    border:1px solid rgba(255,70,85,.3);
+    filter:brightness(.7);
+    transition:.3s;
+}
+
+.process-images img:hover{
+    filter:brightness(1);
+    transform:scale(1.05);
+}
+
+/* TEXT */
+.process-card p{
+    color:#ccc;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* GLITCH LINE EFFECT */
+.process-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,70,85,.08),transparent);
+    transition:.6s;
+}
+
+.process-card:hover::before{
+    left:100%;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .process-images img{
+        height:70px;
+    }
+}
+/* ========================= */
+/* FAVORITE WORKS SECTION */
+/* ========================= */
+
+.fav-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.fav-card{
+    position:relative;
+    background:#111;
+    border:1px solid rgba(255,70,85,.25);
+    border-left:5px solid #ff4655;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.fav-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(255,70,85,.2);
+}
+
+/* IMAGE */
+.fav-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    filter:brightness(.7);
+    transition:.3s;
+}
+
+.fav-card:hover img{
+    filter:brightness(1);
+    transform:scale(1.05);
+}
+
+/* INFO */
+.fav-info{
+    padding:15px;
+}
+
+.fav-info span{
+    font-size:11px;
+    color:#ff4655;
+    letter-spacing:2px;
+}
+
+.fav-info h3{
+    font-family:'Oswald',sans-serif;
+    margin:8px 0;
+    color:#fff;
+    font-size:20px;
+}
+
+.fav-info p{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* GLITCH SWEEP */
+.fav-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,70,85,.08),transparent);
+    transition:.6s;
+}
+
+.fav-card:hover::before{
+    left:120%;
+}
+
+.riot-artist-card{
+    position:relative;
+    padding:45px;
+    border-left:6px solid #ff4655;
+    background:linear-gradient(135deg,#0f0f0f,#161616);
+    overflow:hidden;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 88%,
+        96% 100%,
+        0 100%
+    );
+}
+
+/* glowing scan line */
+.riot-artist-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,70,85,.12),
+        transparent
+    );
+    transition:.7s;
+}
+
+.riot-artist-card:hover::before{
+    left:120%;
+}
+
+/* badge */
+.riot-badge{
+    position:absolute;
+    top:18px;
+    right:18px;
+    font-size:11px;
+    letter-spacing:3px;
+    color:#ff4655;
+    border:1px solid rgba(255,70,85,.4);
+    padding:6px 10px;
+    background:rgba(0,0,0,.4);
+}
+
+/* heading */
+.riot-heading{
+    font-family:'Oswald',sans-serif;
+    font-size:26px;
+    color:#ff4655;
+    margin-bottom:15px;
+    letter-spacing:2px;
+    position:relative;
+}
+
+.riot-heading::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:60px;
+    height:2px;
+    background:#ff4655;
+    box-shadow:0 0 12px #ff4655;
+}
+
+/* text */
+.riot-artist-card p{
+    color:#d8d8d8;
+    font-size:15px;
+    line-height:1.9;
+}
+
+/* hover lift */
+.riot-artist-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(255,70,85,.15);
+    transition:.3s;
+}
+/* ========================= */
+/* RIOT LIVE FX UPGRADE */
+/* ========================= */
+
+/* RED ENERGY PARTICLES */
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#ff4655;
+    box-shadow:0 0 12px #ff4655;
+    border-radius:50%;
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+    from{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+    20%{opacity:1;}
+    to{
+        transform:translateY(-10vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* HERO GLITCH TEXT */
+.glitch{
+    position:relative;
+}
+
+.glitch::before,
+.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+}
+
+.glitch::before{
+    color:#ff4655;
+    animation:glitch1 .4s infinite;
+    z-index:-1;
+}
+
+.glitch::after{
+    color:#00fff0;
+    animation:glitch2 .4s infinite;
+    z-index:-2;
+}
+
+@keyframes glitch1{
+    0%{transform:translate(0);}
+    25%{transform:translate(-2px,2px);}
+    50%{transform:translate(2px,-2px);}
+    100%{transform:translate(0);}
+}
+
+@keyframes glitch2{
+    0%{transform:translate(0);}
+    25%{transform:translate(2px,-2px);}
+    50%{transform:translate(-2px,2px);}
+    100%{transform:translate(0);}
+}
+
+/* CARD LIGHT FOLLOW */
+.module::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at var(--x) var(--y),
+    rgba(255,70,85,.18),transparent 35%);
+    pointer-events:none;
+}
+
+/* SCANLINE */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:linear-gradient(
+        transparent 50%,
+        rgba(255,255,255,.015) 50%
+    );
+    background-size:100% 4px;
+    pointer-events:none;
+    z-index:9999;
+}.logo{
+    font-family:'Oswald',sans-serif;
+    font-size:24px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#fff;
+    position:relative;
+    display:inline-block;
+
+    /* RIOT FEEL: slight tilt */
+    transform:skewX(-12deg);
+}
+
+/* RED SLASH ACCENT (RIOT SIGNATURE STYLE) */
+.logo::before{
+    content:"";
+    position:absolute;
+    left:-18px;
+    top:50%;
+    transform:translateY(-50%) skewX(-12deg);
+
+    width:6px;
+    height:120%;
+
+    background:#ff4655;
+    box-shadow:0 0 12px #ff4655;
+}
+
+/* UNDERLINE CUT (ANGULAR STYLE) */
+.logo::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+
+    width:85%;
+    height:3px;
+
+    background:linear-gradient(
+        90deg,
+        #ff4655,
+        transparent
+    );
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        92% 100%,
+        0% 100%
+    );
+
+    box-shadow:0 0 10px rgba(255,70,85,.6);
+}
+
+/* HOVER: “ENERGY SHIFT” */
+.logo:hover{
+    color:#ff4655;
+    transform:skewX(-12deg) translateX(3px);
+    text-shadow:0 0 10px rgba(255,70,85,.6);
+}
+
+/* subtle glitch flicker */
+@keyframes riotFlicker{
+    0%,100%{opacity:1;}
+    50%{opacity:.85;}
+}
+
+.logo{
+    animation:riotFlicker 3s infinite;
+}
+
+</style>
+</head>
+<body>
+<div class="particles"></div>
+
+<nav>
+    <h1 class="logo">PORTFOLIO</h1>
+    <ul>
+        <li><a href="#cover">Home</a></li>
+        <li><a href="#contents">Contents</a></li>
+        <li><a href="#artist">Artist</a></li>
+        <li><a href="#modules">Modules</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<!-- ========================= -->
+<!-- REPLACE YOUR HERO SECTION WITH THIS -->
+<!-- ========================= -->
+
+<section class="hero" id="cover">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-left hidden">
+
+    <!-- YOUR PICTURE -->
+    <div class="profile-wrap">
+        <img src="crayons.jpg" class="profile-pic">
+        <span class="ring ring1"></span>
+        <span class="ring ring2"></span>
+    </div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- REPLACE HERO RIGHT CONTENT WITH THIS -->
+<!-- ===================================== -->
+
+<div class="hero-right hidden">
+
+    <p class="mini-title">MY VISUAL</p>
+
+    <h2 id="typingText" class="glitch" data-text="ART PORTFOLIO"></h2>
+
+
+    <!-- INFO -->
+    <div class="hero-info">
+
+        <div class="info-box">
+            <span>Name</span>
+            <h4>Terence Joshua A. Soria</h4>
+        </div>
+
+        <div class="info-box">
+            <span>Course</span>
+            <h4>BSIT</h4>
+        </div>
+
+        <div class="info-box">
+            <span>Section</span>
+            <h4>Block C</h4>
+        </div>
+
+        <div class="info-box">
+            <span>Contact</span>
+            <h4>tjsoria18@email.com</h4>
+        </div>
+
+    </div>
+
+    <p class="hero-desc">
+        Creative student passionate in design, coding, and digital innovation.
+        Combining technology and creativity to build modern projects.
+    </p>
+
+    <!-- BUTTONS -->
+    <div class="hero-buttons">
+
+        <button onclick="document.getElementById('contents').scrollIntoView({behavior:'smooth'})">
+            ENTER PORTFOLIO
+        </button>
+
+        <button class="btn-outline" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+            VIEW WORKS
+        </button>
+
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="social-links">
+
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- ========================= -->
+<!-- ADD THIS HTML BELOW HERO SECTION -->
+<!-- ========================= -->
+
+<section class="slider-section hidden">
+
+<h2 class="title">Featured Works</h2>
+
+<div class="slider">
+
+<button class="slider-btn prev">&#10094;</button>
+<button class="slider-btn next">&#10095;</button>
+
+<div class="slides">
+
+<div class="slide">
+<img src="terence.png">
+<div class="slide-content">
+<h2>COLLAGE</h2>
+<p>Digital Visual World Collage inspired by identity, hobbies, and technology.</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="r.png">
+<div class="slide-content">
+<h2>DRAWING</h2>
+<p>Drawing that inspired me that i can draw.</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="q.png">
+<div class="slide-content">
+<h2>PATTERN DESIGN</h2>
+<p>Creating Filipino inspired pattern design.</p>
+</div>
+</div>
+
+</div>
+
+<div class="dots">
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+
+</div>
+</section>
+
+<button class="top-btn" id="topBtn">&#8593;</button>
+
+<!-- CONTENTS -->
+<section id="contents" class="hidden riot-section">
+
+<h2 class="title">
+    <i class="fa-solid fa-compass"></i> TABLE OF CONTENTS
+</h2>
+
+<div class="riot-menu">
+
+    <div class="riot-tile main" onclick="document.getElementById('artist').scrollIntoView({behavior:'smooth'})">
+        <div class="riot-tag">PROFILE</div>
+        <i class="fa-solid fa-scroll"></i>
+        <h3>Artist Statement</h3>
+        <p>Identity & creative direction</p>
+    </div>
+
+    <div class="riot-grid">
+
+        <div class="riot-tile" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+            <span>01</span>
+            <i class="fa-solid fa-image"></i>
+            <h3>Collage</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>02</span>
+            <i class="fa-solid fa-pen-nib"></i>
+            <h3>Drawing</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>03</span>
+            <i class="fa-solid fa-shapes"></i>
+            <h3>Abstract</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>04</span>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <h3>Transformation</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>05</span>
+            <i class="fa-solid fa-flag"></i>
+            <h3>Pattern Design</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>06-07</span>
+            <i class="fa-solid fa-paintbrush"></i>
+            <h3>Painting</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>08</span>
+            <i class="fa-solid fa-rectangle-ad"></i>
+            <h3>Poster</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>09</span>
+            <i class="fa-solid fa-camera"></i>
+            <h3>Photography</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>10</span>
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3>Infographic</h3>
+        </div>
+
+        <div class="riot-tile">
+            <span>11</span>
+            <i class="fa-solid fa-face-smile"></i>
+            <h3>Meme</h3>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- ARTIST -->
+<section id="artist" class="hidden riot-section">
+
+<h2 class="title">
+    <i class="fa-solid fa-user-pen"></i> ARTIST STATEMENT
+</h2>
+
+<div class="riot-card riot-artist-card">
+
+    <div class="riot-glow"></div>
+
+    <div class="riot-badge">PROFILE DATA</div>
+
+    <h3 class="riot-heading">CREATIVE IDENTITY</h3>
+
+    <p>
+     My portfolio explores the development of my visual understanding and creative skills throughout the course in Reading Visual Arts. Each work reflects my growth in observing, analyzing, and applying the elements and principles of design. I experimented with different styles, from realistic observational drawings to abstract compositions, allowing me to express ideas in both structured and imaginative ways. Through activities like the transformation series and Filipino-inspired pattern design, I learned how culture, creativity, and technique can come together to create meaningful visual outcomes My process involved planning, sketching, and refining, which helped me appreciate the importance of patience and attention to detail. I also explored digital tools in creating posters, infographics, and meme series, expanding my skills beyond traditional media. Overall, this portfolio represents not only my finished artworks but also my learning journey, showing how I developed confidence in expressing ideas visually and understanding art more deeply.
+
+
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- MODULES -->
+<section id="modules">
+<h2 class="title hidden">
+    <i class="fa-solid fa-layer-group"></i> Module Outputs
+</h2>
+
+<div class="module hidden">
+    <img src="terence.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-image"></i> Module 1</h3>
+        <p>This collage is a representation of myself and my digital visual world, which comprises social media, music, and digital tools that I use on a daily basis for both learning and entertainment. </p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="jayson.jpg">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-pen"></i> Module 2</h3>
+        <p>This piece is an observational drawing of everyday objects a water bottle, stapler, and a shoe applying the seven elements of art. It focuses on shape, form, and value through realistic shading, highlighting how light and shadow create a more lifelike and dimensional effect.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="3.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-shapes"></i> Module 3</h3>
+        <p>This purely abstract artwork focuses on the principle of movement. I created
+a sense of motion by layering geometric and organic shapes so the viewer’s eyes
+naturally move diagonally across the piece.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="tt.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Module 4</h3>
+        <p>This transformation series shows how a single subject evolves across styles: representational (realistic and detailed), abstract (simplified but still recognizable), and non-objective (no clear subject, only lines, shapes, and colors)..</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="q.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-flag"></i> Module 5</h3>
+        <p>This Filipino-inspired design features geometric patterns and bold colors, with my name in Baybayin at the center, highlighting cultural identity and balance.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="r.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-paintbrush"></i> Module 6–7</h3>
+        <p>This pencil drawing of a glass and an apple focuses on realism through shading techniques like hatching, cross-hatching, and blending. It highlights depth, texture, and the use of light and shadow to create a three-dimensional effect.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="k.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-rectangle-ad"></i> Module 8</h3>
+        <p>This digital poster promotes responsible AI use, highlighting fairness, privacy, transparency, accountability, and safety through clear visuals and a clean, engaging design.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="h.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-camera"></i> Module 9</h3>
+        <p>This three-photo story shows a typical day of an IT student from arriving on campus, studying in class, to going home highlighting growth, discipline, and balance.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="v.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-chart-column"></i> Module 10</h3>
+        <p>This infographic shows the most popular programming languages in 2026 using a clear layout, pie chart, and icons, with refined design for readability and balance.</p>
+    </div>
+</div>
+
+<div class="module hidden">
+    <img src="t.png">
+    <div class="module-info">
+        <h3><i class="fa-solid fa-face-smile"></i> Module 11</h3>
+        <p>This meme shows how group work often becomes unfair when only one person does all the tasks. It uses humor to highlight the importance of responsibility, teamwork, and equal participation.</p>
+    </div>
+</div>
+<!-- PROCESS DOCUMENTATION (NEW DESIGN) -->
+<!-- PROCESS DOCUMENTATION (NEW DESIGN) -->
+<section id="process" class="riot-section hidden">
+
+<h2 class="title">
+    <i class="fa-solid fa-diagram-project"></i> Process Documentation
+</h2>
+
+<p style="color:#aaa; margin-bottom:30px;">
+    Development breakdown of selected works sketches, iterations, and final output progression.
+</p>
+
+<div class="process-grid">
+
+    <!-- ITEM 1 -->
+    <div class="process-card">
+        <div class="process-header">
+            <span class="tag">WORK 01</span>
+            <h3>Transformation Series</h3>
+        </div>
+
+        <div class="process-images">
+            <img src="6.png">
+            <img src="5.png">
+            <img src="4.png">
+        </div>
+
+        <p>
+            This process shows Representational to Abstract to Non-Objective.
+        </p>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="process-card">
+        <div class="process-header">
+            <span class="tag">WORK 02</span>
+            <h3>Infographic</h3>
+        </div>
+
+        <div class="process-images">
+            <img src="ja.png">
+            <img src="ja2.png">
+            <img src="ja3.png">
+        </div>
+
+        <p>
+            This process show the making of infographic using different elements in canva.
+        </p>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="process-card">
+        <div class="process-header">
+            <span class="tag">WORK 03</span>
+            <h3>Meme Series</h3>
+        </div>
+
+        <div class="process-images">
+            <img src="kobe.png">
+            <img src="kobe2.png">
+            <img src="kobe3.png">
+        </div>
+
+        <p>
+            This process show the making of the meme using my humour accurately.
+        </p>
+    </div>
+
+</div>
+
+</section>
+<!-- FAVORITE WORKS -->
+<section id="favorites" class="riot-section hidden">
+
+<h2 class="title">
+    <i class="fa-solid fa-star"></i> Favorite Works
+</h2>
+
+<p style="color:#aaa; margin-bottom:30px;">
+    A selection of my strongest and most meaningful outputs.
+</p>
+
+<div class="fav-grid">
+
+    <!-- FAVORITE 1 -->
+    <div class="fav-card">
+        <img src="terence.png">
+        <div class="fav-info">
+            <span>01</span>
+            <h3>Digital Visual Collage</h3>
+            <p>Represents my identity, interests, and digital lifestyle through layered composition.</p>
+        </div>
+    </div>
+
+    <!-- FAVORITE 2 -->
+    <div class="fav-card">
+        <img src="3.png">
+        <div class="fav-info">
+            <span>02</span>
+            <h3>Abstract Collage</h3>
+            <p>I created a sense of motion by layering geometric and organic shapes, allowing the viewer’s eyes.</p>
+        </div>
+    </div>
+
+    <!-- FAVORITE 3 -->
+    <div class="fav-card">
+        <img src="r.png">
+        <div class="fav-info">
+            <span>03</span>
+            <h3>Drawing</h3>
+            <p>This piece shows my understanding of value and how shading can bring everyday objects to life.</p>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+</section>
+
+<!-- ADD THIS SECTION ABOVE FOOTER -->
+
+<section class="thankyou hidden" id="thanks">
+
+    <div class="thank-box">
+
+        <div class="thank-line"></div>
+
+        <h2>THANK YOU</h2>
+
+        <p>
+            Thank you for taking the time to view my portfolio.  
+            This collection represents my creativity, dedication,  
+            and growth throughout the course. Every artwork reflects  
+            the passion and effort I gave in learning visual design.
+        </p>
+
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            BACK TO TOP
+        </button>
+
+    </div>x
+
+</section>
+
+<footer>
+@TjSoriaXXXCritical |  Visual Arts Portfolio
+</footer>
+
+<!-- REPLACE YOUR WHOLE <script> WITH THIS FIXED VERSION -->
+
+<script>
+    window.history.scrollRestoration = "manual";
+window.scrollTo(0, 0);
+
+document.addEventListener("DOMContentLoaded", ()=>{
+
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }else{
+            entry.target.classList.remove("show");
+        }
+    }); 
+},{threshold:0.15});
+
+document.querySelectorAll(".hidden").forEach((el)=>{
+    observer.observe(el);
+});
+
+
+/* ===== SLIDER FIX ===== */
+const slides = document.querySelector(".slides");
+const slideItems = document.querySelectorAll(".slide");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+const dots = document.querySelectorAll(".dot");
+
+let index = 0;
+let total = slideItems.length;
+
+function showSlide(i){
+
+    if(i >= total){
+        index = 0;
+    }
+    else if(i < 0){
+        index = total - 1;
+    }
+    else{
+        index = i;
+    }
+
+    slides.style.transform = "translateX(-" + (index * 100) + "%)";
+
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+}
+
+/* BUTTON EVENTS */
+nextBtn.addEventListener("click", ()=>{
+    showSlide(index + 1);
+});
+
+prevBtn.addEventListener("click", ()=>{
+    showSlide(index - 1);
+});
+
+/* DOT EVENTS */
+dots.forEach((dot,i)=>{
+    dot.addEventListener("click", ()=>{
+        showSlide(i);
+    });
+});
+
+/* AUTO SLIDE */
+setInterval(()=>{
+    showSlide(index + 1);
+},5000);
+
+
+/* NAVBAR + TOP BUTTON */
+const nav = document.querySelector("nav");
+
+
+/* TOP BUTTON */
+topBtn.addEventListener("click", ()=>{
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+});
+
+showSlide(0);
+
+});
+
+
+/* TYPING EFFECT */
+const text = "ART PORTFOLIO";
+const typing = document.getElementById("typingText");
+
+let i = 0;
+
+function typeWriter(){
+    if(i < text.length){
+        typing.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,120);
+    }else{
+        typing.innerHTML += " <span>|</span>";
+        blinkCursor();
+    }
+}
+
+function blinkCursor(){
+    setInterval(()=>{
+        const cursor = typing.querySelector("span");
+        if(cursor){
+            cursor.style.opacity =
+            cursor.style.opacity == "0" ? "1" : "0";
+        }
+    },500);
+}
+
+typeWriter();
+
+
+/* PARALLAX HERO */
+window.addEventListener("mousemove",(e)=>{
+    const pic = document.querySelector(".profile-pic");
+
+    let x = (window.innerWidth / 2 - e.pageX) / 40;
+    let y = (window.innerHeight / 2 - e.pageY) / 40;
+
+    pic.style.transform =
+    "translate("+x+"px,"+y+"px)";
+});
+const links = document.querySelectorAll("nav a");
+
+links.forEach(link=>{
+    link.addEventListener("click", ()=>{
+        links.forEach(l=>l.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
+
+/* PARTICLES */
+const particleWrap = document.querySelector(".particles");
+
+for(let i=0;i<40;i++){
+    let p = document.createElement("span");
+
+    p.style.left = Math.random()*100 + "%";
+    p.style.animationDuration = (3 + Math.random()*6) + "s";
+    p.style.animationDelay = Math.random()*5 + "s";
+
+    particleWrap.appendChild(p);
+}
+
+/* LIGHT FOLLOW ON MODULES */
+document.querySelectorAll(".module").forEach(card=>{
+    card.addEventListener("mousemove",(e)=>{
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--x",(e.clientX-rect.left)+"px");
+        card.style.setProperty("--y",(e.clientY-rect.top)+"px");
+    });
+});
+
+</script>
+
+
+</body>
+</html>
